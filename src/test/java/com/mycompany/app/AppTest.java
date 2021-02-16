@@ -50,7 +50,7 @@ public class AppTest {
 
     @BeforeClass
     public static void nashornBenchmark() throws Exception {
-        nashorn = App.benchNashornScriptEngine();
+        nashorn = App.tryNashornScriptEngine();
     }
 
     @Test
@@ -65,7 +65,7 @@ public class AppTest {
     @Test
     public void testGraalScriptEngineSpeed() throws Exception {
         assertGraalVMOrJDK11();
-        long graalJS = App.benchGraalScriptEngine();
+        long graalJS = App.tryGraalScriptEngine();
         if (nashorn < graalJS) {
             fail(String.format("Graal.js (%d ms) should be faster than Nashorn (%d ms).", graalJS, nashorn));
         }
